@@ -1,13 +1,436 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Google AI Studio App</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Debre Markos - Mota Road Project Management System</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
+    body {
+      background: #f4f6f9;
+      color: #222;
+    }
+
+    header {
+      background: #0f172a;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      background: #1e293b;
+      padding: 15px;
+    }
+
+    nav button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    nav button:hover {
+      background: #1d4ed8;
+    }
+
+    .container {
+      width: 95%;
+      max-width: 1400px;
+      margin: 30px auto;
+    }
+
+    .section {
+      display: none;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .active {
+      display: block;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #0f172a;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: #f8fafc;
+      padding: 20px;
+      border-radius: 10px;
+      border-left: 6px solid #2563eb;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    table th,
+    table td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+    }
+
+    table th {
+      background: #2563eb;
+      color: white;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .btn {
+      background: #16a34a;
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #15803d;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #0f172a;
+      color: white;
+      margin-top: 40px;
+    }
+
+    .search-box {
+      margin-bottom: 20px;
+    }
+
+    @media(max-width:768px){
+      nav {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Debre Markos - Mota Road Project Management System</h1>
+  <p>Road Construction Monitoring and Reporting Platform</p>
+</header>
+
+<nav>
+  <button onclick="showSection('dashboard')">Dashboard</button>
+  <button onclick="showSection('dailyReports')">Daily Reports</button>
+  <button onclick="showSection('financial')">Financial Reports</button>
+  <button onclick="showSection('timeline')">Project Timeline</button>
+  <button onclick="showSection('manpower')">Manpower</button>
+  <button onclick="showSection('machinery')">Machinery</button>
+  <button onclick="showSection('search')">Search</button>
+  <button onclick="showSection('settings')">Settings</button>
+</nav>
+
+<div class="container">
+
+  <section id="dashboard" class="section active">
+    <h2>Project Dashboard</h2>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Total Progress</h3>
+        <p>74% Completed</p>
+      </div>
+
+      <div class="card">
+        <h3>Workers On Site</h3>
+        <p>145 Personnel</p>
+      </div>
+
+      <div class="card">
+        <h3>Machinery Active</h3>
+        <p>28 Machines</p>
+      </div>
+
+      <div class="card">
+        <h3>Budget Used</h3>
+        <p>ETB 148,000,000</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="dailyReports" class="section">
+    <h2>Daily Site Reports</h2>
+
+    <form>
+      <input type="date" />
+      <input type="text" placeholder="Site Location" />
+      <textarea rows="5" placeholder="Daily activities and progress..."></textarea>
+      <button type="submit" class="btn">Submit Report</button>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Location</th>
+          <th>Activity</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2026-05-15</td>
+          <td>KM 22+400</td>
+          <td>Subgrade Compaction</td>
+          <td>Completed</td>
+        </tr>
+        <tr>
+          <td>2026-05-14</td>
+          <td>Bridge Section</td>
+          <td>Concrete Casting</td>
+          <td>Ongoing</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="financial" class="section">
+    <h2>Financial Reports</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Month</th>
+          <th>Budget</th>
+          <th>Used</th>
+          <th>Remaining</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>January</td>
+          <td>ETB 20,000,000</td>
+          <td>ETB 15,500,000</td>
+          <td>ETB 4,500,000</td>
+        </tr>
+        <tr>
+          <td>February</td>
+          <td>ETB 25,000,000</td>
+          <td>ETB 19,000,000</td>
+          <td>ETB 6,000,000</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="timeline" class="section">
+    <h2>Project Timeline</h2>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Phase 1</h3>
+        <p>Earthwork and Clearing</p>
+      </div>
+
+      <div class="card">
+        <h3>Phase 2</h3>
+        <p>Drainage Construction</p>
+      </div>
+
+      <div class="card">
+        <h3>Phase 3</h3>
+        <p>Base Course Placement</p>
+      </div>
+
+      <div class="card">
+        <h3>Phase 4</h3>
+        <p>Asphalt Surfacing</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="manpower" class="section">
+    <h2>Manpower Management</h2>
+
+    <form>
+      <input type="text" placeholder="Employee Name" />
+      <input type="text" placeholder="Position" />
+      <input type="number" placeholder="Salary" />
+      <button type="submit" class="btn">Add Employee</button>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Position</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Nahom Tamru</td>
+          <td>Site Foreman</td>
+          <td>Active</td>
+        </tr>
+        <tr>
+          <td>Abebe Kebede</td>
+          <td>Office Engineer</td>
+          <td>Active</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="machinery" class="section">
+    <h2>Machinery Management</h2>
+
+    <form>
+      <input type="text" placeholder="Machine Name" />
+      <input type="text" placeholder="Machine ID" />
+      <select>
+        <option>Active</option>
+        <option>Maintenance</option>
+      </select>
+      <button type="submit" class="btn">Add Machinery</button>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Machine</th>
+          <th>ID</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Excavator</td>
+          <td>EX-203</td>
+          <td>Active</td>
+        </tr>
+        <tr>
+          <td>Loader</td>
+          <td>LD-112</td>
+          <td>Maintenance</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="search" class="section">
+    <h2>Search Reports</h2>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search reports, personnel, machinery..." onkeyup="searchTable()" />
+    </div>
+
+    <table id="searchTable">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Machinery</td>
+          <td>Loader LD-112 Maintenance</td>
+        </tr>
+        <tr>
+          <td>Daily Report</td>
+          <td>Subgrade compaction completed at KM 22+400</td>
+        </tr>
+        <tr>
+          <td>Personnel</td>
+          <td>Nahom Tamru - Site Foreman</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="settings" class="section">
+    <h2>System Settings</h2>
+
+    <form>
+      <input type="text" placeholder="Project Name" />
+      <input type="email" placeholder="Admin Email" />
+      <input type="password" placeholder="New Password" />
+      <button type="submit" class="btn">Save Settings</button>
+    </form>
+  </section>
+
+</div>
+
+<footer>
+  <p>Debre Markos - Mota Road Project Management System © 2026</p>
+</footer>
+
+<script>
+  function showSection(sectionId) {
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(section => {
+      section.classList.remove('active');
+    });
+
+    document.getElementById(sectionId).classList.add('active');
+  }
+
+  function searchTable() {
+    const input = document.getElementById('searchInput');
+    const filter = input.value.toLowerCase();
+    const table = document.getElementById('searchTable');
+    const rows = table.getElementsByTagName('tr');
+
+    for (let i = 1; i < rows.length; i++) {
+      let text = rows[i].textContent || rows[i].innerText;
+      if (text.toLowerCase().indexOf(filter) > -1) {
+        rows[i].style.display = '';
+      } else {
+        rows[i].style.display = 'none';
+      }
+    }
+  }
+</script>
+
+</body>
+</html>
