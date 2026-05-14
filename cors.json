@@ -1,0 +1,8 @@
+[
+  {
+    "origin": ["https://ais-dev-cn4dgc4sfkamqtr7ujcbcs-147404635557.europe-west2.run.app"],
+    "method": ["GET", "POST", "PUT", "DELETE", "HEAD"],
+    "maxAgeSeconds": 3600,
+    "responseHeader": ["Content-Type", "Authorization", "Content-Length"]
+  }
+]

@@ -1,0 +1,6 @@
+{
+  "name": "Debre Markos-Mota Road Project Management System",
+  "description": "A project management platform for the Debre Markos-Digotsion-Mota road construction.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": []
+}

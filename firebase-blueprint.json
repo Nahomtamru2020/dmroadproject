@@ -1,0 +1,305 @@
+{
+  "entities": {
+    "Manpower": {
+      "title": "Manpower",
+      "description": "Personnel details.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "profession": { "type": "string" },
+        "type": { "type": "string", "enum": ["Local", "Chinese"] },
+        "hireDate": { "type": "string", "format": "date" },
+        "firedDate": { "type": "string", "format": "date" }
+      }
+    },
+    "Machinery": {
+      "title": "Machinery",
+      "description": "Machinery details.",
+      "type": "object",
+      "properties": {
+        "plateNumber": { "type": "string" },
+        "type": { "type": "string" },
+        "joiningDate": { "type": "string", "format": "date" },
+        "demobilizationDate": { "type": "string", "format": "date" }
+      }
+    },
+    "User": {
+      "title": "User",
+      "description": "System user profiles.",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "name": { "type": "string" },
+        "role": { "type": "string", "enum": ["Admin", "Project Manager", "Site Engineer", "Foreman", "Finance Officer", "Store Keeper", "Guest"] }
+      },
+      "required": ["email", "role"]
+    },
+    "DailyReport": {
+      "title": "Daily Report",
+      "description": "Daily site construction activities.",
+      "type": "object",
+      "properties": {
+        "date": { "type": "string", "format": "date" },
+        "content": { "type": "string" },
+        "author": { "type": "string" },
+        "documentUrl": { "type": "string" }
+      },
+      "required": ["date", "content", "author"]
+    },
+    "FinancialReport": {
+      "title": "Financial Report",
+      "description": "Monthly financial breakdown.",
+      "type": "object",
+      "properties": {
+        "month": { "type": "string" },
+        "amountSpent": { "type": "number" },
+        "detailsUrl": { "type": "string" }
+      }
+    },
+    "Document": {
+      "title": "Project Document",
+      "description": "Managed project documentation (Drawings, Contracts, etc).",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "category": { "type": "string", "enum": ["Drawings", "Contracts", "Environmental", "Site Instructions", "Other"] },
+        "description": { "type": "string" },
+        "date": { "type": "string", "format": "date" },
+        "authorRole": { "type": "string" },
+        "url": { "type": "string" },
+        "fileType": { "type": "string" }
+      }
+    },
+    "GPSLog": {
+      "title": "GPS Log",
+      "description": "Spatial logging of road segments.",
+      "type": "object",
+      "properties": {
+        "segmentName": { "type": "string" },
+        "lat": { "type": "number" },
+        "lng": { "type": "number" },
+        "status": { "type": "string", "enum": ["Planned", "In Progress", "Completed"] },
+        "timestamp": { "type": "string", "format": "date-time" }
+      }
+    },
+    "MaterialDelivery": {
+      "title": "Material Delivery",
+      "description": "Tracking of material deliveries to specific coordinates.",
+      "type": "object",
+      "properties": {
+        "materialType": { "type": "string" },
+        "quantity": { "type": "string" },
+        "lat": { "type": "number" },
+        "lng": { "type": "number" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      }
+    },
+    "FuelLog": {
+      "title": "Fuel Log",
+      "description": "Tracking fuel consumption for machinery.",
+      "type": "object",
+      "properties": {
+        "machineryId": { "type": "string" },
+        "plateNumber": { "type": "string" },
+        "liters": { "type": "number" },
+        "cost": { "type": "number" },
+        "date": { "type": "string", "format": "date" }
+      }
+    },
+    "MaintenanceRecord": {
+      "title": "Maintenance Record",
+      "description": "Servicing and breakdown history.",
+      "type": "object",
+      "properties": {
+        "machineryId": { "type": "string" },
+        "plateNumber": { "type": "string" },
+        "type": { "type": "string", "enum": ["Scheduled Service", "Breakdown Repair"] },
+        "description": { "type": "string" },
+        "date": { "type": "string", "format": "date" },
+        "cost": { "type": "number" }
+      }
+    },
+    "SparePart": {
+      "title": "Spare Part",
+      "description": "Inventory of machinery parts.",
+      "type": "object",
+      "properties": {
+        "partName": { "type": "string" },
+        "quantity": { "type": "number" },
+        "unit": { "type": "string" },
+        "minThreshold": { "type": "number" }
+      }
+    },
+    "SafetyIncident": {
+      "title": "Safety Incident",
+      "description": "Logs of accidents or near-misses.",
+      "type": "object",
+      "properties": {
+        "date": { "type": "string", "format": "date" },
+        "severity": { "type": "string", "enum": ["Low", "Medium", "High", "Critical"] },
+        "description": { "type": "string" },
+        "location": { "type": "string" },
+        "reportedBy": { "type": "string" }
+      }
+    },
+    "PPEAudit": {
+      "title": "PPE Audit",
+      "description": "Compliance checks for Personal Protective Equipment.",
+      "type": "object",
+      "properties": {
+        "date": { "type": "string", "format": "date" },
+        "segment": { "type": "string" },
+        "complianceScore": { "type": "number" },
+        "notes": { "type": "string" }
+      }
+    },
+    "EmergencyAlert": {
+      "title": "Emergency Alert",
+      "description": "Real-time critical safety broadcasts.",
+      "type": "object",
+      "properties": {
+        "timestamp": { "type": "string", "format": "date-time" },
+        "message": { "type": "string" },
+        "sender": { "type": "string" }
+      }
+    },
+    "QualityTest": {
+      "title": "Quality Test Result",
+      "description": "Asphalt, concrete, and soil test results.",
+      "type": "object",
+      "properties": {
+        "type": { "type": "string", "enum": ["Asphalt", "Concrete", "Soil", "Aggregates"] },
+        "date": { "type": "string", "format": "date" },
+        "location": { "type": "string" },
+        "result": { "type": "string", "enum": ["Pass", "Fail", "Pending"] },
+        "parameters": { "type": "object" },
+        "labReportUrl": { "type": "string" }
+      }
+    },
+    "InspectionApproval": {
+      "title": "Inspection Approval",
+      "description": "Formal sign-off on completed site work.",
+      "type": "object",
+      "properties": {
+        "workType": { "type": "string" },
+        "location": { "type": "string" },
+        "status": { "type": "string", "enum": ["Approved", "Rejected", "Conditionally Approved"] },
+        "inspector": { "type": "string" },
+        "date": { "type": "string", "format": "date" },
+        "remarks": { "type": "string" }
+      }
+    },
+    "BudgetCategory": {
+      "title": "Budget Category",
+      "description": "Budget vs actual expenditure tracking.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "allocated": { "type": "number" },
+        "actual": { "type": "number" },
+        "currency": { "type": "string" }
+      }
+    },
+    "ContractorPayment": {
+      "title": "Contractor Payment",
+      "description": "Disbursements to sub-contractors.",
+      "type": "object",
+      "properties": {
+        "contractorName": { "type": "string" },
+        "amount": { "type": "number" },
+        "date": { "type": "string", "format": "date" },
+        "invoiceUrl": { "type": "string" },
+        "status": { "type": "string", "enum": ["Pending", "Paid", "Disputed"] }
+      }
+    },
+    "BOQItem": {
+      "title": "BOQ Item",
+      "description": "Bill of Quantities tracking.",
+      "type": "object",
+      "properties": {
+        "itemCode": { "type": "string" },
+        "description": { "type": "string" },
+        "unit": { "type": "string" },
+        "plannedQuantity": { "type": "number" },
+        "executedQuantity": { "type": "number" },
+        "unitRate": { "type": "number" }
+      }
+    },
+    "ProcurementRequest": {
+      "title": "Procurement Request",
+      "description": "Material and service acquisition workflow.",
+      "type": "object",
+      "properties": {
+        "item": { "type": "string" },
+        "quantity": { "type": "number" },
+        "requestedBy": { "type": "string" },
+        "status": { "type": "string", "enum": ["Requested", "Approved", "Ordered", "Received"] },
+        "urgency": { "type": "string", "enum": ["Normal", "Urgent", "Critical"] }
+      }
+    },
+    "ProjectTask": {
+      "title": "Project Task",
+      "description": "Specific construction task with timeline.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "startDate": { "type": "string", "format": "date" },
+        "endDate": { "type": "string", "format": "date" },
+        "status": { "type": "string", "enum": ["Todo", "In Progress", "Completed", "Delayed"] },
+        "progress": { "type": "number" },
+        "assignedTo": { "type": "string" }
+      }
+    },
+    "Vendor": {
+      "title": "Vendor",
+      "description": "Suppliers and service providers.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "contactPerson": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "category": { "type": "string" }
+      }
+    },
+    "PurchaseOrder": {
+      "title": "Purchase Order",
+      "description": "Official orders sent to vendors.",
+      "type": "object",
+      "properties": {
+        "poNumber": { "type": "string" },
+        "vendorId": { "type": "string" },
+        "vendorName": { "type": "string" },
+        "totalAmount": { "type": "number" },
+        "status": { "type": "string", "enum": ["Draft", "Issued", "Completed", "Void"] },
+        "orderDate": { "type": "string", "format": "date" },
+        "expectedDeliveryDate": { "type": "string", "format": "date" }
+      }
+    }
+  },
+  "firestore": {
+    "/users/{userId}": { "schema": "User", "description": "User profiles and roles." },
+    "/manpower/{manpowerId}": { "schema": "Manpower", "description": "Personnel records." },
+    "/machinery/{machineryId}": { "schema": "Machinery", "description": "Machinery assets." },
+    "/dailyReports/{reportId}": { "schema": "DailyReport", "description": "Daily construction reports." },
+    "/financialReports/{reportId}": { "schema": "FinancialReport", "description": "Monthly financial reports." },
+    "/documents/{docId}": { "schema": "Document", "description": "General project documents." },
+    "/gpsLogs/{logId}": { "schema": "GPSLog", "description": "GPS spatial data." },
+    "/materialDeliveries/{deliveryId}": { "schema": "MaterialDelivery", "description": "Material delivery logs." },
+    "/fuelLogs/{logId}": { "schema": "FuelLog", "description": "Fuel consumption logs." },
+    "/maintenanceRecords/{recordId}": { "schema": "MaintenanceRecord", "description": "Machinery maintenance history." },
+    "/spareParts/{partId}": { "schema": "SparePart", "description": "Spare parts inventory." },
+    "/safetyIncidents/{incidentId}": { "schema": "SafetyIncident", "description": "Accident reports." },
+    "/ppeAudits/{auditId}": { "schema": "PPEAudit", "description": "Safety compliance checks." },
+    "/emergencyAlerts/{alertId}": { "schema": "EmergencyAlert", "description": "Critical alerts." },
+    "/qualityTests/{testId}": { "schema": "QualityTest", "description": "Material quality tests." },
+    "/inspectionApprovals/{approvalId}": { "schema": "InspectionApproval", "description": "Site work approvals." },
+    "/budgets/{budgetId}": { "schema": "BudgetCategory", "description": "Budget tracking." },
+    "/contractorPayments/{paymentId}": { "schema": "ContractorPayment", "description": "Subcontractor payments." },
+    "/boqItems/{itemId}": { "schema": "BOQItem", "description": "BOQ tracking." },
+    "/procurementRequests/{requestId}": { "schema": "ProcurementRequest", "description": "Procurement workflow." },
+    "/projectTasks/{taskId}": { "schema": "ProjectTask", "description": "Site task scheduling." },
+    "/vendors/{vendorId}": { "schema": "Vendor", "description": "Vendor profiles." },
+    "/purchaseOrders/{poId}": { "schema": "PurchaseOrder", "description": "Purchase order tracking." }
+  }
+}
